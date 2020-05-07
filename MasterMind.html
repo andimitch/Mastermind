@@ -1,0 +1,562 @@
+<head>
+	<title>Mastermind</title>
+	<link rel="stylesheet" type="text/css" href="MasterMind.css">
+	
+</head>
+
+<body>
+	<script>
+		
+var guess = [0, 0, 0, 0];
+
+var x1 = Math.floor((Math.random() * 6) + 1);
+var x2 = Math.floor((Math.random() * 6) + 1);
+var x3 = Math.floor((Math.random() * 6) + 1);
+var x4 = Math.floor((Math.random() * 6) + 1);
+
+const code = [x1, x2, x3, x4];
+ 
+	
+function add(id, index, colourID, colour) {
+	document.getElementById(id).style.backgroundColor = colour;
+	guess[index] = colourID;
+	/*document.getElementById("para1").innerHTML = code;*/
+	/*document.getElementById("para2").innerHTML = guess;*/
+}
+
+function won(){
+	const colourKey = {1: '#673ab7', 2: 'red', 3:'orange', 4:'yellow', 5:'seagreen', 6:'#1E90FF'};
+	
+	document.getElementById('code1').style.backgroundColor = colourKey[x1];
+	document.getElementById('code2').style.backgroundColor = colourKey[x2];
+	document.getElementById('code3').style.backgroundColor = colourKey[x3];
+	document.getElementById('code4').style.backgroundColor = colourKey[x4];
+}
+
+function CalculateScore(line) {
+	var blk = 0;
+	for(let i=0; i<4; i++){
+		if (guess[i]==code[i]){
+			blk++;
+		}
+	}
+	if (blk==4){
+		won();
+	} 
+	var codeChange = [x1, x2, x3, x4];
+	var same = 0;
+	for(let j=0; j<4; j++){
+		for(k=0; k<4; k++){
+			if (guess[j]==codeChange[k]){
+				same++;
+				delete codeChange[k];
+				break;
+			}
+		}
+	}
+	var whyte = same - blk;
+	var b = 1;
+
+	
+	while (b <= blk) {
+		document.getElementById(line.concat(b.toString())).style.backgroundColor = 'black';
+		b++;
+	}
+	
+	var w = (blk+1);
+	while (w <= same){
+		document.getElementById(line.concat(w.toString())).style.backgroundColor = 'white';
+		w++;
+	}
+	
+} 
+	</script>
+	
+	<div class="code">
+		<div id="code1" class="hidden" ></div>
+		<div id="code2" class="hidden" ></div>
+		<div id="code3" class="hidden" ></div>
+		<div id="code4" class="hidden" ></div>
+	</div>
+	
+	<div class="board">
+		<div class="gameBoard">
+				<!-- LEVEL 1 --------------------------------------------------------------------------------------------->
+				<div class="scoreBoard">
+					<div id="a1" class="inner" style="float:left"></div>
+					<div id="a2" class="inner" style="float:right"></div>
+					<div id="a3" class="inner" style="float:left"></div>
+					<div id="a4" class="inner" style="float:right"></div>
+				</div>
+				
+				<div class="dropdown">
+					<li id="aa" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('aa', 0, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('aa', 0, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('aa', 0, 2, 'red');"></button>
+							<button class="o" onclick="add('aa', 0, 3, 'orange');"></button>
+							<button class="y" onclick="add('aa', 0, 4, 'yellow');"></button>
+							<button class="p" onclick="add('aa', 0, 5, 'seagreen');"></button>
+						</div>	
+				</div>		
+						
+				<div class="dropdown">
+					<li id="ab" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('ab', 1, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('ab', 1, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('ab', 1, 2, 'red');"></button>
+							<button class="o" onclick="add('ab', 1, 3, 'orange');"></button>
+							<button class="y" onclick="add('ab', 1, 4, 'yellow');"></button>
+							<button class="p" onclick="add('ab', 1, 5, 'seagreen');"></button>
+						</div>	
+				</div>	
+				
+				<div class="dropdown">
+					<li id="ac" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('ac', 2, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('ac', 2, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('ac', 2, 2, 'red');"></button>
+							<button class="o" onclick="add('ac', 2, 3, 'orange');"></button>
+							<button class="y" onclick="add('ac', 2, 4, 'yellow');"></button>
+							<button class="p" onclick="add('ac', 2, 5, 'seagreen');"></button>
+						</div>	
+				</div>	
+				
+				<div class="dropdown">
+					<li id="ad" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('ad', 3, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('ad', 3, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('ad', 3, 2, 'red');"></button>
+							<button class="o" onclick="add('ad', 3, 3, 'orange');"></button>
+							<button class="y" onclick="add('ad', 3, 4, 'yellow');"></button>
+							<button class="p" onclick="add('ad', 3, 5, 'seagreen');"></button>
+						</div>	
+				</div>	
+				
+				
+				<!-- LEVEL 2 --------------------------------------------------------------------------------------------->
+				<div class="scoreBoard">
+					<div id="b1" class="inner" style="float:left"></div>
+					<div id="b2" class="inner" style="float:right"></div>
+					<div id="b3" class="inner" style="float:left"></div>
+					<div id="b4" class="inner" style="float:right"></div>
+				</div>
+				
+				<div class="dropdown">
+					<li id="ba" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('ba', 0, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('ba', 0, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('ba', 0, 2, 'red');"></button>
+							<button class="o" onclick="add('ba', 0, 3, 'orange');"></button>
+							<button class="y" onclick="add('ba', 0, 4, 'yellow');"></button>
+							<button class="p" onclick="add('ba', 0, 5, 'seagreen');"></button>
+
+						</div>	
+				</div>		
+						
+				<div class="dropdown">
+					<li id="bb" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('bb', 1, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('bb', 1, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('bb', 1, 2, 'red');"></button>
+							<button class="o" onclick="add('bb', 1, 3, 'orange');"></button>
+							<button class="y" onclick="add('bb', 1, 4, 'yellow');"></button>
+							<button class="p" onclick="add('bb', 1, 5, 'seagreen');"></button>
+						</div>	
+				</div>	
+				
+				<div class="dropdown">
+					<li id="bc" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('bc', 2, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('bc', 2, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('bc', 2, 2, 'red');"></button>
+							<button class="o" onclick="add('bc', 2, 3, 'orange');"></button>
+							<button class="y" onclick="add('bc', 2, 4, 'yellow');"></button>
+							<button class="p" onclick="add('bc', 2, 5, 'seagreen');"></button>
+						</div>	
+				</div>	
+				
+				<div class="dropdown">
+					<li id="bd" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('bd', 3, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('bd', 3, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('bd', 3, 2, 'red');"></button>
+							<button class="o" onclick="add('bd', 3, 3, 'orange');"></button>
+							<button class="y" onclick="add('bd', 3, 4, 'yellow');"></button>
+							<button class="p" onclick="add('bd', 3, 5, 'seagreen');"></button>
+						</div>	
+				</div>	
+				
+				<!-- LEVEL 3 --------------------------------------------------------------------------------------------->
+				<div class="scoreBoard">
+					<div id="c1" class="inner" style="float:left"></div>
+					<div id="c2" class="inner" style="float:right"></div>
+					<div id="c3" class="inner" style="float:left"></div>
+					<div id="c4" class="inner" style="float:right"></div>
+				</div>
+				
+				<div class="dropdown">
+					<li id="ca" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('ca', 0, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('ca', 0, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('ca', 0, 2, 'red');"></button>
+							<button class="o" onclick="add('ca', 0, 3, 'orange');"></button>
+							<button class="y" onclick="add('ca', 0, 4, 'yellow');"></button>
+							<button class="p" onclick="add('ca', 0, 5, 'seagreen');"></button>
+						</div>	
+				</div>		
+						
+				<div class="dropdown">
+					<li id="cb" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('cb', 1, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('cb', 1, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('cb', 1, 2, 'red');"></button>
+							<button class="o" onclick="add('cb', 1, 3, 'orange');"></button>
+							<button class="y" onclick="add('cb', 1, 4, 'yellow');"></button>
+							<button class="p" onclick="add('cb', 1, 5, 'seagreen');"></button>
+						</div>	
+				</div>	
+				
+				<div class="dropdown">
+					<li id="cc" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('cc', 2, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('cc', 2, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('cc', 2, 2, 'red');"></button>
+							<button class="o" onclick="add('cc', 2, 3, 'orange');"></button>
+							<button class="y" onclick="add('cc', 2, 4, 'yellow');"></button>
+							<button class="p" onclick="add('cc', 2, 5, 'seagreen');"></button>
+						</div>	
+				</div>	
+				
+				<div class="dropdown">
+					<li id="cd" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('cd', 3, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('cd', 3, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('cd', 3, 2, 'red');"></button>
+							<button class="o" onclick="add('cd', 3, 3, 'orange');"></button>
+							<button class="y" onclick="add('cd', 3, 4, 'yellow');"></button>
+							<button class="p" onclick="add('cd', 3, 5, 'seagreen');"></button>
+						</div>	
+				</div>	
+				
+				
+				<!-- LEVEL 4 --------------------------------------------------------------------------------------------->
+				<div class="scoreBoard">
+					<div id="d1" class="inner" style="float:left"></div>
+					<div id="d2" class="inner" style="float:right"></div>
+					<div id="d3" class="inner" style="float:left"></div>
+					<div id="d4" class="inner" style="float:right"></div>
+				</div>
+				
+				<div class="dropdown">
+					<li id="da" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('da', 0, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('da', 0, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('da', 0, 2, 'red');"></button>
+							<button class="o" onclick="add('da', 0, 3, 'orange');"></button>
+							<button class="y" onclick="add('da', 0, 4, 'yellow');"></button>
+							<button class="p" onclick="add('da', 0, 5, 'seagreen');"></button>
+
+						</div>	
+				</div>		
+						
+				<div class="dropdown">
+					<li id="db" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('db', 1, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('db', 1, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('db', 1, 2, 'red');"></button>
+							<button class="o" onclick="add('db', 1, 3, 'orange');"></button>
+							<button class="y" onclick="add('db', 1, 4, 'yellow');"></button>
+							<button class="p" onclick="add('db', 1, 5, 'seagreen');"></button>
+						</div>	
+				</div>	
+				
+				<div class="dropdown">
+					<li id="dc" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('dc', 2, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('dc', 2, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('dc', 2, 2, 'red');"></button>
+							<button class="o" onclick="add('dc', 2, 3, 'orange');"></button>
+							<button class="y" onclick="add('dc', 2, 4, 'yellow');"></button>
+							<button class="p" onclick="add('dc', 2, 5, 'seagreen');"></button>
+						</div>	
+				</div>	
+				
+				<div class="dropdown">
+					<li id="dd" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('dd', 3, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('dd', 3, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('dd', 3, 2, 'red');"></button>
+							<button class="o" onclick="add('dd', 3, 3, 'orange');"></button>
+							<button class="y" onclick="add('dd', 3, 4, 'yellow');"></button>
+							<button class="p" onclick="add('dd', 3, 5, 'seagreen');"></button>
+						</div>	
+				</div>
+				
+				<!-- LEVEL 5 --------------------------------------------------------------------------------------------->
+				<div class="scoreBoard">
+					<div id="e1" class="inner" style="float:left"></div>
+					<div id="e2" class="inner" style="float:right"></div>
+					<div id="e3" class="inner" style="float:left"></div>
+					<div id="e4" class="inner" style="float:right"></div>
+				</div>
+				
+				<div class="dropdown">
+					<li id="ea" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('ea', 0, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('ea', 0, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('ea', 0, 2, 'red');"></button>
+							<button class="o" onclick="add('ea', 0, 3, 'orange');"></button>
+							<button class="y" onclick="add('ea', 0, 4, 'yellow');"></button>
+							<button class="p" onclick="add('ea', 0, 5, 'seagreen');"></button>
+						</div>	
+				</div>		
+						
+				<div class="dropdown">
+					<li id="eb" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('eb', 1, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('eb', 1, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('eb', 1, 2, 'red');"></button>
+							<button class="o" onclick="add('eb', 1, 3, 'orange');"></button>
+							<button class="y" onclick="add('eb', 1, 4, 'yellow');"></button>
+							<button class="p" onclick="add('eb', 1, 5, 'seagreen');"></button>
+						</div>	
+				</div>	
+				
+				<div class="dropdown">
+					<li id="ec" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('ec', 2, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('ec', 2, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('ec', 2, 2, 'red');"></button>
+							<button class="o" onclick="add('ec', 2, 3, 'orange');"></button>
+							<button class="y" onclick="add('ec', 2, 4, 'yellow');"></button>
+							<button class="p" onclick="add('ec', 2, 5, 'seagreen');"></button>
+						</div>	
+				</div>	
+				
+				<div class="dropdown">
+					<li id="ed" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('ed', 3, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('ed', 3, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('ed', 3, 2, 'red');"></button>
+							<button class="o" onclick="add('ed', 3, 3, 'orange');"></button>
+							<button class="y" onclick="add('ed', 3, 4, 'yellow');"></button>
+							<button class="p" onclick="add('ed', 3, 5, 'seagreen');"></button>
+						</div>	
+				</div>	
+				
+				
+				<!-- LEVEL 6 --------------------------------------------------------------------------------------------->
+				<div class="scoreBoard">
+					<div id="f1" class="inner" style="float:left"></div>
+					<div id="f2" class="inner" style="float:right"></div>
+					<div id="f3" class="inner" style="float:left"></div>
+					<div id="f4" class="inner" style="float:right"></div>
+				</div>
+				
+				<div class="dropdown">
+					<li id="fa" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('fa', 0, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('fa', 0, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('fa', 0, 2, 'red');"></button>
+							<button class="o" onclick="add('fa', 0, 3, 'orange');"></button>
+							<button class="y" onclick="add('fa', 0, 4, 'yellow');"></button>
+							<button class="p" onclick="add('fa', 0, 5, 'seagreen');"></button>
+
+						</div>	
+				</div>		
+						
+				<div class="dropdown">
+					<li id="fb" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('fb', 1, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('fb', 1, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('fb', 1, 2, 'red');"></button>
+							<button class="o" onclick="add('fb', 1, 3, 'orange');"></button>
+							<button class="y" onclick="add('fb', 1, 4, 'yellow');"></button>
+							<button class="p" onclick="add('fb', 1, 5, 'seagreen');"></button>
+						</div>	
+				</div>	
+				
+				<div class="dropdown">
+					<li id="fc" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('fc', 2, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('fc', 2, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('fc', 2, 2, 'red');"></button>
+							<button class="o" onclick="add('fc', 2, 3, 'orange');"></button>
+							<button class="y" onclick="add('fc', 2, 4, 'yellow');"></button>
+							<button class="p" onclick="add('fc', 2, 5, 'seagreen');"></button>
+						</div>	
+				</div>	
+				
+				<div class="dropdown">
+					<li id="fd" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('fd', 3, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('fd', 3, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('fd', 3, 2, 'red');"></button>
+							<button class="o" onclick="add('fd', 3, 3, 'orange');"></button>
+							<button class="y" onclick="add('fd', 3, 4, 'yellow');"></button>
+							<button class="p" onclick="add('fd', 3, 5, 'seagreen');"></button>
+						</div>	
+				</div>
+		
+				<!-- LEVEL 7 --------------------------------------------------------------------------------------------->
+				<div class="scoreBoard">
+					<div id="g1" class="inner" style="float:left"></div>
+					<div id="g2" class="inner" style="float:right"></div>
+					<div id="g3" class="inner" style="float:left"></div>
+					<div id="g4" class="inner" style="float:right"></div>
+				</div>
+				
+				<div class="dropdown">
+					<li id="ga" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('ga', 0, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('ga', 0, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('ga', 0, 2, 'red');"></button>
+							<button class="o" onclick="add('ga', 0, 3, 'orange');"></button>
+							<button class="y" onclick="add('ga', 0, 4, 'yellow');"></button>
+							<button class="p" onclick="add('ga', 0, 5, 'seagreen');"></button>
+						</div>	
+				</div>		
+						
+				<div class="dropdown">
+					<li id="gb" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('gb', 1, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('gb', 1, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('gb', 1, 2, 'red');"></button>
+							<button class="o" onclick="add('gb', 1, 3, 'orange');"></button>
+							<button class="y" onclick="add('gb', 1, 4, 'yellow');"></button>
+							<button class="p" onclick="add('gb', 1, 5, 'seagreen');"></button>
+						</div>	
+				</div>	
+				
+				<div class="dropdown">
+					<li id="gc" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('gc', 2, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('gc', 2, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('gc', 2, 2, 'red');"></button>
+							<button class="o" onclick="add('gc', 2, 3, 'orange');"></button>
+							<button class="y" onclick="add('gc', 2, 4, 'yellow');"></button>
+							<button class="p" onclick="add('gc', 2, 5, 'seagreen');"></button>
+						</div>	
+				</div>	
+				
+				<div class="dropdown">
+					<li id="gd" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('gd', 3, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('gd', 3, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('gd', 3, 2, 'red');"></button>
+							<button class="o" onclick="add('gd', 3, 3, 'orange');"></button>
+							<button class="y" onclick="add('gd', 3, 4, 'yellow');"></button>
+							<button class="p" onclick="add('gd', 3, 5, 'seagreen');"></button>
+						</div>	
+				</div>	
+				
+				
+				<!-- LEVEL 8 --------------------------------------------------------------------------------------------->
+				<div class="scoreBoard">
+					<div id="h1" class="inner" style="float:left"></div>
+					<div id="h2" class="inner" style="float:right"></div>
+					<div id="h3" class="inner" style="float:left"></div>
+					<div id="h4" class="inner" style="float:right"></div>
+				</div>
+				
+				<div class="dropdown">
+					<li id="ha" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('ha', 0, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('ha', 0, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('ha', 0, 2, 'red');"></button>
+							<button class="o" onclick="add('ha', 0, 3, 'orange');"></button>
+							<button class="y" onclick="add('ha', 0, 4, 'yellow');"></button>
+							<button class="p" onclick="add('ha', 0, 5, 'seagreen');"></button>
+
+						</div>	
+				</div>		
+						
+				<div class="dropdown">
+					<li id="hb" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('hb', 1, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('hb', 1, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('hb', 1, 2, 'red');"></button>
+							<button class="o" onclick="add('hb', 1, 3, 'orange');"></button>
+							<button class="y" onclick="add('hb', 1, 4, 'yellow');"></button>
+							<button class="p" onclick="add('hb', 1, 5, 'seagreen');"></button>
+						</div>	
+				</div>	
+				
+				<div class="dropdown">
+					<li id="hc" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('hc', 2, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('hc', 2, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('hc', 2, 2, 'red');"></button>
+							<button class="o" onclick="add('hc', 2, 3, 'orange');"></button>
+							<button class="y" onclick="add('hc', 2, 4, 'yellow');"></button>
+							<button class="p" onclick="add('hc', 2, 5, 'seagreen');"></button>
+						</div>	
+				</div>	
+				
+				<div class="dropdown">
+					<li id="hd" class="button"></li>
+						<div class="colours">
+							<button class="b" onclick="add('hd', 3, 6, '#1E90FF');"></button>
+					        <button class="v" onclick="add('hd', 3, 1, '#673ab7');"></button>
+							<button class="r" onclick="add('hd', 3, 2, 'red');"></button>
+							<button class="o" onclick="add('hd', 3, 3, 'orange');"></button>
+							<button class="y" onclick="add('hd', 3, 4, 'yellow');"></button>
+							<button class="p" onclick="add('hd', 3, 5, 'seagreen');"></button>
+						</div>	
+				</div>
+				
+				<div style="margin-bottom:50px;">
+					<button class="ScoreMe" onclick="won();">Okay I suck, what is the code?</button><br><br>
+				</div>
+	
+		</div>
+	
+		<div class="ScoreMeBoard">
+			<button class="ScoreMe" onclick="CalculateScore('a');">Score Me</button>
+			<button class="ScoreMe" onclick="CalculateScore('b');">Score Me</button>
+			<button class="ScoreMe" onclick="CalculateScore('c');">Score Me</button>
+			<button class="ScoreMe" onclick="CalculateScore('d');">Score Me</button>
+			<button class="ScoreMe" onclick="CalculateScore('e');">Score Me</button>
+			<button class="ScoreMe" onclick="CalculateScore('f');">Score Me</button>
+			<button class="ScoreMe" onclick="CalculateScore('g');">Score Me</button>
+			<button class="ScoreMe" onclick="CalculateScore('h');">Score Me</button>
+		</div>
+	</div>
+	
+	<p id="para1"></p>
+	<p id="para2"></p>
+	
+</body>
+

@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css?family=Anton|Architects+Daughter|Arizonia|Berkshire+Swash|Butterfly+Kids|Cookie|Dr+Sugiyama|Felipa|Herr+Von+Muellerhoff|Indie+Flower|Josefin+Sans|Kaushan+Script|Lobster+Two|Lora|Lovers+Quarrel|Merienda+One|Merriweather|Miss+Fajardose|Molle:400i|Montez|Montserrat|Mr+Bedfort|Mr+De+Haviland|PT+Serif|Parisienne|Petit+Formal+Script|Playfair+Display|Princess+Sofia|Raleway|Redressed|Roboto|Sacramento|Slabo+27px|Tangerine');
+body{
+	background-color: #f2f2f2;
+}
+
+.hidden {
+	margin:5px;
+	width:50px;
+	height:50px;
+	border-radius: 50px;
+	display:inline-block;
+	text-align:center;
+	background-color: white;
+	cursor: pointer;
+}
+
+.board {
+	width: 500px;
+	margin: 10px auto;
+}
+.gameBoard {
+	margin-left:50px;
+	width: 350px;
+	float:left;
+
+}
+
+.code { 
+	width: 260px;
+	height: 60px;
+	margin: 30px auto;
+	border-radius: 10px;
+	font-family: 'Raleway';
+	text-align: center;
+	line-height: 50px;
+	color: black;
+	background-color: white;
+}
+
+.scoreMeBoard {
+	float:left;
+	width: 100px;
+}
+
+.scoreMe {
+	margin: 14.5px;
+	border-radius: 10px;
+	font-family: 'Raleway';
+	text-align: center;
+	height: 50px;
+	color: black;
+	background-color: #DCDCDC;
+	border:none;
+}
+.scoreMe:hover {
+	background-color: #C0C0C0;
+}
+
+
+.scoreBoard {
+	margin:5px;
+	width:50px;
+	height:50px;
+	border-radius:10px;
+	display:inline-block;
+	background-color: #d9d9d9;
+}
+
+.inner {
+	width:14px;
+	height:14px;
+	border-radius:10px;
+	margin:5px;
+	background-color: #a5a5a5;
+}
+
+.button {
+	margin:5px;
+	width:50px;
+	height:50px;
+	border-radius: 50px;
+	display:inline-block;
+	text-align:center;
+	background-color: #242423;
+	cursor: pointer;
+}
+.button:hover{ background-color: #DCDCDC; }
+
+.dropdown {
+	margin:5px;
+	width:50px;
+	height:70px;
+	display:inline-block;
+	text-align:center;
+	cursor: pointer;
+}
+
+.dropdown:hover .colours { /* when you hover over dropdown, what happens to colours */
+	display: inline-block;
+}
+
+.colours {
+	display:none; /* doesnt display it until you hover!! */
+	width: 10px;
+	position:absolute;
+}
+
+
+.r {
+	width:50px;
+	height:20px;
+	display: inline-block;
+	background-color: red;
+	border: none;
+}
+
+.o {
+	width:50px;
+	height:20px;
+	display: inline-block;
+	background-color: orange;
+	border: none;
+}
+
+.y {
+	width:50px;
+	height:20px;
+	display: inline-block;
+	background-color: yellow;
+	border: none;
+}
+
+.v {
+	width:50px;
+	height:20px;
+	display: inline-block;
+	background-color: #673ab7;
+	border: none;
+}
+
+.p {
+	width:50px;
+	height:20px;
+	display: inline-block;
+	background-color: seagreen;
+	border: none;
+}
+
+.b {
+	width:50px;
+	height:20px;
+	display: inline-block;
+	background-color: #1E90FF;
+	border: none;
+}
+
+
+
+
+.colours:hover .colours {
+	display:inline-block;
+}
+
+
+
+
